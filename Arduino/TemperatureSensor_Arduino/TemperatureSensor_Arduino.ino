@@ -1,60 +1,54 @@
-//www.elegoo.com
-//2018.10.25
+/*-----------Arduino LM35 Code-------------*/
 
+/*-----------Digital Thermometer Using Arduino-------------*/
 
-#include <dht_nonblocking.h>
-#define DHT_SENSOR_TYPE DHT_TYPE_11
+#include<LiquidCrystal.h>
+LiquidCrystal lcd(7,6,5,4,3,2);
 
-static const int DHT_SENSOR_PIN = 2;
-DHT_nonblocking dht_sensor( DHT_SENSOR_PIN, DHT_SENSOR_TYPE );
+#define sensor A0
 
+byte degree[8] = 
+              {
+                0b00011,
+                0b00011,
+                0b00000,
+                0b00000,
+                0b00000,
+                0b00000,
+                0b00000,
+                0b00000
+              };
 
-
-/*
- * Initialize the serial port.
- */
-void setup( )
+void setup()
 {
-  Serial.begin( 9600);
+  Serial.begin(9600);
+  lcd.begin(16,2);
+  lcd.createChar(1, degree);
+  lcd.setCursor(0,0);
+  lcd.print("    Digital    ");
+  lcd.setCursor(0,1);
+  lcd.print("  Thermometer   ");
+  delay(4000);
+  lcd.clear();
+  lcd.print(" Circuit Digest  ");
+  delay(4000);
+  lcd.clear();
 }
 
-
-
-/*
- * Poll for a measurement, keeping the state machine alive.  Returns
- * true if a measurement is available.
- */
-static bool measure_environment( float *temperature, float *humidity )
+void loop()
 {
-  static unsigned long measurement_timestamp = millis( );
-
-  /* Measure once every four seconds. */
-  if( millis( ) - measurement_timestamp > 3000ul )
-  {
-    if( dht_sensor.measure( temperature, humidity ) == true )
-    {
-      measurement_timestamp = millis( );
-      return( true );
-    }
-  }
-
-  return( false );
-}
-
-
-
-/*
- * Main program loop.
- */
-void loop( )
-{
-  float temperature;
-  float humidity;
-
-  /* Measure temperature and humidity.  If the functions returns
-     true, then a measurement is available. */
-  if( measure_environment( &temperature, &humidity ) == true )
-  {
-    Serial.println( temperature, 1 );
-  }
+  /*---------Temperature-------*/
+     float reading=analogRead(sensor);
+     float temperature=reading*(5.0/1023.0)*100;
+     delay(10);
+  
+  /*------Display Result------*/
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Temperature");
+    lcd.setCursor(4,1);
+    lcd.print(temperature);
+    lcd.write(1);
+    lcd.print("C");
+    delay(1000);
 }
