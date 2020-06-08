@@ -1,6 +1,6 @@
-#define led 7
-#define buzzer 8
-#define pirSensor 9
+#define led 13
+#define buzzer 6
+#define pirSensor 8
 
 
 

@@ -67,5 +67,6 @@ void loop( )
     lcd.setCursor(0, 1);
     lcd.print(" IOT  Automatic");
     Serial.println( temperature, 1 );
+    delay(5000);
   }
 }
