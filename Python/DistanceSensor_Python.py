@@ -36,7 +36,7 @@ if Arduino.isOpen():
             print('outputInString  ='+ outputInString)
             
             data = [{"Id__c": "1", 'Distance__c': outputInString}]
-            sf.bulk.LightSensor__e.insert(data)
+            sf.bulk.DistanceSensor__e.insert(data)
             print("Platform Event Sent")
             print(outputInString)
             time.sleep(5)   

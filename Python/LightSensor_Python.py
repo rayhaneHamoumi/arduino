@@ -35,7 +35,7 @@ if Arduino.isOpen():
             outputInString = bytes.decode(outputInBytes)       
             print('outputInString  ='+ outputInString)
             
-            data = [{"Id__c": "1", 'Distance__c': outputInString}]
+            data = [{"Id__c": "1", 'LightOn__c': outputInString}]
             sf.bulk.LightSensor__e.insert(data)
             print("Platform Event Sent")
             print(outputInString)
