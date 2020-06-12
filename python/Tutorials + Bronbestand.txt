@@ -1,0 +1,8 @@
+http://www.manelsoft.com/projects/nodemcu_sfdc_temperature_service.aspx
+https://theuzo007.wordpress.com/2012/12/29/turn-on-lcd-backlight-by-button-arduino/
+https://pythonforundergradengineers.com/python-arduino-LED.html#install-pyserial
+https://pypi.org/
+http://amitsalesforce.blogspot.com/2017/06/test-salesforce-api-by-postman-rest.html
+https://www.linkedin.com/pulse/how-to-internet-things-salesforcecom-nadim-shaikh/
+https://news.pwc.be/how-to-create-a-smart-fridge-with-raspberry-pi-salesforce-iot-cloud/
+https://www.elegoo.com/ Cdrom
